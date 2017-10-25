@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>ALL_BUILD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>ZERO_CHECK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>application_osgearth_viewer_ios.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>install.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>package.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>243702A3225240A59DDF8E2B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>33E148B3F6CE42559B5A541A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C43F5C2B97B74502B5A210F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE852CF8CCE74C50B57C8849</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D113193CC9D54113B03EA5A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

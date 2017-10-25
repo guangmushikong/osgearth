@@ -71,7 +71,7 @@ IF (OSGEARTH_EMBED_GIT_SHA)
 ENDIF (OSGEARTH_EMBED_GIT_SHA)
 
 #
-SET(OSGEARTH_USE_GLES FALSE)
+SET(OSGEARTH_USE_GLES TRUE)
 
 # check for iOS build
 OPTION(OSGEARTH_BUILD_PLATFORM_IPHONE "Enable IPhoneSDK Device support" OFF)
@@ -80,7 +80,7 @@ OPTION(OSGEARTH_BUILD_PLATFORM_IPHONE_SIMULATOR "Enable IPhoneSDK Simulator supp
 IF(OSGEARTH_BUILD_PLATFORM_IPHONE OR OSGEARTH_BUILD_PLATFORM_IPHONE_SIMULATOR)
     SET(OSGEARTH_USE_GLES TRUE)
     #you need to manually set the default sdk version here
-    SET (IPHONE_SDKVER "10.2" CACHE STRING "iOS SDK-Version")
+    SET (IPHONE_SDKVER "10.3" CACHE STRING "iOS SDK-Version")
     SET (IPHONE_VERSION_MIN "8.0" CACHE STRING "IOS minimum os version, use 7.0 or greater to get 64bit support")
     SET (IPHONE_PLATFORMSROOT "/Applications/Xcode.app/Contents/Developer/Platforms")
 

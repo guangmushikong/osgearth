@@ -1,0 +1,1950 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		33E148B3F6CE42559B5A541A /* package */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D69055013C2D4AE89CAF49F8 /* Build configuration list for PBXAggregateTarget "package" */;
+			buildPhases = (
+				C8DC9CA818A34426A27F60EF /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				0B375B8DAF0E4E59AA886660 /* PBXTargetDependency */,
+			);
+			name = package;
+			productName = package;
+		};
+		C43F5C2B97B74502B5A210F6 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 301089B580184F9E92169F79 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				9640C56E038A45BBA6775BC4 /* CMake Rules */,
+			);
+			dependencies = (
+				D1871C3E1F574A7AB911BB8E /* PBXTargetDependency */,
+				53C76E80BE174AA6B1D7738D /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		CE852CF8CCE74C50B57C8849 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 73004076E56E43A197D21385 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				9C4A183C042045A09DE3348F /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		D113193CC9D54113B03EA5A7 /* install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BD0785A89EB0433F9458A2E0 /* Build configuration list for PBXAggregateTarget "install" */;
+			buildPhases = (
+				309BE7CEFD8E43F4B1AC1AB7 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				52A0A3CAA14A4AA1A96384C3 /* PBXTargetDependency */,
+			);
+			name = install;
+			productName = install;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0CF229A573CA4F2A879589B3 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3F221A4921EA49DD83E9D8B9 /* AppDelegate.mm */; settings = {COMPILER_FLAGS = ""; }; };
+		1B9BE650C1E14243BB4F99D7 /* StartViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5F0B9EC30F45208E7F4E1E /* StartViewerController.xib */; settings = {COMPILER_FLAGS = ""; }; };
+		469522F276D74A2ABAD75DF0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2DB287DDA84C35A7722926 /* ViewController.xib */; settings = {COMPILER_FLAGS = ""; }; };
+		5D023E9C588640D1B47E18D0 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F5607B35A4246029E57FA21 /* ViewController.mm */; settings = {COMPILER_FLAGS = ""; }; };
+		74CDECB719934504B2263C2B /* StartViewerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F6A09C4D04BF4AE2AFB08335 /* StartViewerController.mm */; settings = {COMPILER_FLAGS = ""; }; };
+		7808B87F88CD42C7A74EB683 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = A76880C1789F479793659878 /* main.mm */; settings = {COMPILER_FLAGS = ""; }; };
+		87650220FBCC42349DD261BE /* readymap.earth in Resources */ = {isa = PBXBuildFile; fileRef = 357568D613104F359E5C18A7 /* readymap.earth */; settings = {COMPILER_FLAGS = ""; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		253604EA7C694655AFC31CFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F670E1CD1B5433DA9CD7C34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C43F5C2B97B74502B5A210F6;
+			remoteInfo = ALL_BUILD;
+		};
+		4625C4DE59554C4F804D760E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F670E1CD1B5433DA9CD7C34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE852CF8CCE74C50B57C8849;
+			remoteInfo = ZERO_CHECK;
+		};
+		9C07AC364A8E41B1B00BAF2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F670E1CD1B5433DA9CD7C34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C43F5C2B97B74502B5A210F6;
+			remoteInfo = ALL_BUILD;
+		};
+		A3BE5087C16C43B082707025 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F670E1CD1B5433DA9CD7C34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 243702A3225240A59DDF8E2B;
+			remoteInfo = application_osgearth_viewer_ios;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		18ECFED775514B66BA2AA7E4 /* osgEarthViewerIOS-Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "osgEarthViewerIOS-Info.plist"; path = "osgearth_viewerIOS/osgEarthViewerIOS-Info.plist"; sourceTree = SOURCE_ROOT; };
+		202FEFE2BB974496AB09C2CD /* AppDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = AppDelegate.h; path = osgearth_viewerIOS/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		357568D613104F359E5C18A7 /* readymap.earth */ = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = readymap.earth; path = ../../tests/readymap.earth; sourceTree = SOURCE_ROOT; };
+		3D7BBAB1BF954F3191E18BCD /* osgearth_viewer_iosd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = osgearth_viewer_iosd.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F221A4921EA49DD83E9D8B9 /* AppDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = AppDelegate.mm; path = osgearth_viewerIOS/AppDelegate.mm; sourceTree = SOURCE_ROOT; };
+		44F4EC1110FA4879A3C37A7D /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; name = CMakeLists.txt; path = osgearth_viewerIOS/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		9F5607B35A4246029E57FA21 /* ViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = ViewController.mm; path = osgearth_viewerIOS/ViewController.mm; sourceTree = SOURCE_ROOT; };
+		A597D58EA02444308E6CEB0D /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A76880C1789F479793659878 /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = main.mm; path = osgearth_viewerIOS/main.mm; sourceTree = SOURCE_ROOT; };
+		B269AC0B7B5D49EE8C20214D /* osgPlugins.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = osgPlugins.h; path = osgearth_viewerIOS/osgPlugins.h; sourceTree = SOURCE_ROOT; };
+		C59BAD7D1FA0AAA800FAC9AC /* libFreetype2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFreetype2.a; sourceTree = "<group>"; };
+		C59BAD7E1FA0AAA900FAC9AC /* libproj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libproj.a; sourceTree = "<group>"; };
+		CB2DB287DDA84C35A7722926 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = osgearth_viewerIOS/ViewController.xib; sourceTree = SOURCE_ROOT; };
+		CB3266A7AF8849ACA59A5DF2 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = sourcecode.text.plist; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = osgearth_viewerIOS/CMakeFiles/application_osgearth_viewer_ios.dir/Info.plist; sourceTree = SOURCE_ROOT; };
+		DFA4AAFBAE1147499867F300 /* ViewController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ViewController.h; path = osgearth_viewerIOS/ViewController.h; sourceTree = SOURCE_ROOT; };
+		E1CE9C62FD094530B1BBB44D /* StartViewerController.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = StartViewerController.h; path = osgearth_viewerIOS/StartViewerController.h; sourceTree = SOURCE_ROOT; };
+		E53A7522383448A78A352380 /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		F6A09C4D04BF4AE2AFB08335 /* StartViewerController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = StartViewerController.mm; path = osgearth_viewerIOS/StartViewerController.mm; sourceTree = SOURCE_ROOT; };
+		FA5F0B9EC30F45208E7F4E1E /* StartViewerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StartViewerController.xib; path = osgearth_viewerIOS/StartViewerController.xib; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		066B46ACEA6F4109986ABCC2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B66C8DB9BD944D839A011116 /* ALL_BUILD */,
+				15543B64CA6F42EDACFB5569 /* ZERO_CHECK */,
+				C59604674E1D4F84A7292C5C /* application_osgearth_viewer_ios */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		15543B64CA6F42EDACFB5569 /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				7F3F44FF5A984519BBB400DC /* CMake Rules */,
+				E53A7522383448A78A352380 /* CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		34F07FEC309E4EEAA4AB421C /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		5034A495C7164D1D84558C72 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D7BBAB1BF954F3191E18BCD /* osgearth_viewer_iosd.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7F3F44FF5A984519BBB400DC /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		A34BA12CFF3E4FDFBE1D77D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CB3266A7AF8849ACA59A5DF2 /* Info.plist */,
+				18ECFED775514B66BA2AA7E4 /* osgEarthViewerIOS-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		ACF9425ED4A548FB9F40C7DB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA5F0B9EC30F45208E7F4E1E /* StartViewerController.xib */,
+				CB2DB287DDA84C35A7722926 /* ViewController.xib */,
+				357568D613104F359E5C18A7 /* readymap.earth */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B66C8DB9BD944D839A011116 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				34F07FEC309E4EEAA4AB421C /* CMake Rules */,
+				A597D58EA02444308E6CEB0D /* CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		BF7D9FE0E20445FD98155F9A = {
+			isa = PBXGroup;
+			children = (
+				C59BAD7D1FA0AAA800FAC9AC /* libFreetype2.a */,
+				C59BAD7E1FA0AAA900FAC9AC /* libproj.a */,
+				066B46ACEA6F4109986ABCC2 /* Sources */,
+				ACF9425ED4A548FB9F40C7DB /* Resources */,
+				5034A495C7164D1D84558C72 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C59604674E1D4F84A7292C5C /* application_osgearth_viewer_ios */ = {
+			isa = PBXGroup;
+			children = (
+				D3FF13FBA32746CEAEDA4C28 /* Header Files */,
+				E1926446DE524174AFD90FC7 /* Source Files */,
+				A34BA12CFF3E4FDFBE1D77D1 /* Resources */,
+				44F4EC1110FA4879A3C37A7D /* CMakeLists.txt */,
+			);
+			name = application_osgearth_viewer_ios;
+			sourceTree = "<group>";
+		};
+		D3FF13FBA32746CEAEDA4C28 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				202FEFE2BB974496AB09C2CD /* AppDelegate.h */,
+				E1CE9C62FD094530B1BBB44D /* StartViewerController.h */,
+				DFA4AAFBAE1147499867F300 /* ViewController.h */,
+				B269AC0B7B5D49EE8C20214D /* osgPlugins.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		E1926446DE524174AFD90FC7 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F221A4921EA49DD83E9D8B9 /* AppDelegate.mm */,
+				F6A09C4D04BF4AE2AFB08335 /* StartViewerController.mm */,
+				9F5607B35A4246029E57FA21 /* ViewController.mm */,
+				A76880C1789F479793659878 /* main.mm */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		243702A3225240A59DDF8E2B /* application_osgearth_viewer_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB7215BBD8B34FC1BC1E3E3D /* Build configuration list for PBXNativeTarget "application_osgearth_viewer_ios" */;
+			buildPhases = (
+				BA305866C363471BA3492364 /* Resources */,
+				53F0C0DD9CD04B4B90CC2489 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = application_osgearth_viewer_ios;
+			productName = application_osgearth_viewer_ios;
+			productReference = 3D7BBAB1BF954F3191E18BCD /* osgearth_viewer_iosd.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F670E1CD1B5433DA9CD7C34 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+					243702A3225240A59DDF8E2B = {
+						DevelopmentTeam = RRVABD6YQ2;
+					};
+					33E148B3F6CE42559B5A541A = {
+						DevelopmentTeam = RRVABD6YQ2;
+					};
+					C43F5C2B97B74502B5A210F6 = {
+						DevelopmentTeam = RRVABD6YQ2;
+					};
+					CE852CF8CCE74C50B57C8849 = {
+						DevelopmentTeam = RRVABD6YQ2;
+					};
+					D113193CC9D54113B03EA5A7 = {
+						DevelopmentTeam = RRVABD6YQ2;
+					};
+				};
+			};
+			buildConfigurationList = C9C05AA4857B41B6A07026A8 /* Build configuration list for PBXProject "OSGEARTH_APPLICATIONS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BF7D9FE0E20445FD98155F9A;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C43F5C2B97B74502B5A210F6 /* ALL_BUILD */,
+				CE852CF8CCE74C50B57C8849 /* ZERO_CHECK */,
+				D113193CC9D54113B03EA5A7 /* install */,
+				33E148B3F6CE42559B5A541A /* package */,
+				243702A3225240A59DDF8E2B /* application_osgearth_viewer_ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA305866C363471BA3492364 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B9BE650C1E14243BB4F99D7 /* StartViewerController.xib in Resources */,
+				469522F276D74A2ABAD75DF0 /* ViewController.xib in Resources */,
+				87650220FBCC42349DD261BE /* readymap.earth in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		309BE7CEFD8E43F4B1AC1AB7 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/cateye/projects/osgearth/src/applications -f /Users/cateye/projects/osgearth/src/applications/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		9640C56E038A45BBA6775BC4 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/cateye/projects/osgearth/src/applications -f /Users/cateye/projects/osgearth/src/applications/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		9C4A183C042045A09DE3348F /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/cateye/projects/osgearth/src/applications -f /Users/cateye/projects/osgearth/src/applications/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		C8DC9CA818A34426A27F60EF /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/cateye/projects/osgearth/src/applications -f /Users/cateye/projects/osgearth/src/applications/CMakeScripts/package_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53F0C0DD9CD04B4B90CC2489 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CF229A573CA4F2A879589B3 /* AppDelegate.mm in Sources */,
+				74CDECB719934504B2263C2B /* StartViewerController.mm in Sources */,
+				5D023E9C588640D1B47E18D0 /* ViewController.mm in Sources */,
+				7808B87F88CD42C7A74EB683 /* main.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0B375B8DAF0E4E59AA886660 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C43F5C2B97B74502B5A210F6 /* ALL_BUILD */;
+			targetProxy = 253604EA7C694655AFC31CFB /* PBXContainerItemProxy */;
+		};
+		52A0A3CAA14A4AA1A96384C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C43F5C2B97B74502B5A210F6 /* ALL_BUILD */;
+			targetProxy = 9C07AC364A8E41B1B00BAF2C /* PBXContainerItemProxy */;
+		};
+		53C76E80BE174AA6B1D7738D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 243702A3225240A59DDF8E2B /* application_osgearth_viewer_ios */;
+			targetProxy = A3BE5087C16C43B082707025 /* PBXContainerItemProxy */;
+		};
+		D1871C3E1F574A7AB911BB8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE852CF8CCE74C50B57C8849 /* ZERO_CHECK */;
+			targetProxy = 4625C4DE59554C4F804D760E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0E7ACB10FA7D42D19E411991 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk;
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/build;
+			};
+			name = RelWithDebInfo;
+		};
+		1752B76D2A4A4627B4F5E0F7 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/cateye/projects/osgearth/bin/MinSizeRel;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks,
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INFOPLIST_FILE = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS/CMakeFiles/application_osgearth_viewer_ios.dir/Info.plist;
+				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = /Users/cateye/projects/osgearth/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/cateye/projects/osgearth/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/cateye/projects/osgearth/lib,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "    -DNDEBUG  ";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"\n-framework",
+					ImageIO,
+					"-framework",
+					CoreImage,
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					CoreGraphics,
+					"\n-framework",
+					JavaScriptCore,
+					"-framework",
+					Security,
+					"-lsqlite3",
+					"-licucore",
+					"-lz",
+					"-liconv",
+					"-lbz2",
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarths.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthFeaturess.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthUtils.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthSymbologys.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthAnnotations.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthUtils.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_agglites.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_arcgiss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_arcgis_map_caches.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_bings.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_bumpmaps.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_cache_filesystems.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_colorramps.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_debugs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_details.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_earths.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_engine_byos.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_engine_mps.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_engine_rexs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_feature_elevations.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_feature_ogrs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_feature_rasters.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_feature_tfss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_feature_wfss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_feature_xyzs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_featurefilter_intersects.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_featurefilter_joins.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_gdals.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_kmls.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_label_annotations.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_mapinspectors.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_mask_features.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_mbtiless.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_model_feature_geoms.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_model_simples.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_monitors.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_noises.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_ocean_simples.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_osgs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_quadkeys.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_refreshs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_scriptengine_javascripts.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_sky_gls.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_sky_simples.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_skyviews.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_splat_masks.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_templates.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_template_matclasss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_terrainshaders.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_tilecaches.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_tileindexs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_tileservices.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_tmss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_vdatum_egm84s.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_vdatum_egm96s.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_vdatum_egm2008s.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_viewpointss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_vpbs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_wcss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_wmss.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_xyzs.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgdb_osgearth_yahoos.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					"-framework",
+					sqlite3,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_tiff.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rgb.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_imageio.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_curl.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_zip.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_freetype.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_ive.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_obj.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_shp.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_openflight.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rot.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_scale.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_trans.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osganimation.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgfx.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgparticle.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgshadow.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgsim.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgterrain.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgtext.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgviewer.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgvolume.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osganimation.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgfx.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgmanipulator.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgparticle.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgshadow.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgsim.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgterrain.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgtext.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgutil.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgviewer.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgvolume.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthUtils.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthAnnotations.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthFeaturess.a,
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarthSymbologys.a,
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					/Users/cateye/projects/osgearth/lib/MinSizeRel/libosgEarths.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					/usr/lib/libm.dylib,
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = osgearth_viewer_ioss;
+				PRODUCT_TYPE = "com.apple.product-type.application";
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1C0D7DBF35FE4FE88B2D5015 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1C5F437931B84105A9216A35 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		1EBC5741658847CAA0CB5A94 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-lz",
+					"-framework",
+					OpenGLES,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos10.3;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		1F180040906F4526857DA6C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		2EF2A1B185A94E2F870BBB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/lib/Debug,
+					/Users/cateye/release/osg/arm64/lib,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-lz",
+					"-framework",
+					OpenGLES,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos10.3;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		3D4D5DFEEBE9466DA2C3E48B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		3E7CD15281514055A1135F2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		4605F07D55E448358EF28D46 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk;
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/build;
+			};
+			name = MinSizeRel;
+		};
+		4B601CC6698347D2B5643532 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk;
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/build;
+			};
+			name = Debug;
+		};
+		65632C6CAA94447797D8CF89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		65BB32295B92439BA1F42095 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		7872C78CE86E4F15B04D9457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/cateye/projects/osgearth/bin/Debug;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks,
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INFOPLIST_FILE = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS/CMakeFiles/application_osgearth_viewer_ios.dir/Info.plist;
+				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = /Users/cateye/projects/osgearth/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/cateye/projects/osgearth/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/cateye/projects/osgearth/lib,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "    ";
+				OTHER_CPLUSPLUSFLAGS = "    ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"-framework",
+					ImageIO,
+					"-framework",
+					CoreImage,
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					JavaScriptCore,
+					"-framework",
+					Security,
+					"-lsqlite3",
+					"-licucore",
+					"-lz",
+					"-liconv",
+					"-lbz2",
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthFeaturesd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthUtild.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthSymbologyd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthAnnotationd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthUtild.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_agglited.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_arcgisd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_arcgis_map_cached.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_bingd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_bumpmapd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_cache_filesystemd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_colorrampd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_debugd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_detaild.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_earthd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_engine_byod.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_engine_mpd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_engine_rexd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_feature_elevationd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_feature_ogrd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_feature_rasterd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_feature_tfsd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_feature_wfsd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_feature_xyzd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_featurefilter_intersectd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_featurefilter_joind.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_gdald.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_kmld.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_label_annotationd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_mapinspectord.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_mask_featured.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_mbtilesd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_model_feature_geomd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_model_simpled.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_monitord.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_noised.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_ocean_simpled.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_osgd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_quadkeyd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_refreshd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_scriptengine_javascriptd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_sky_gld.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_sky_simpled.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_skyviewd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_splat_maskd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_templated.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_template_matclassd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_terrainshaderd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_tilecached.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_tileindexd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_tileserviced.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_tmsd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_vdatum_egm84d.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_vdatum_egm96d.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_vdatum_egm2008d.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_viewpointsd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_vpbd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_wcsd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_wmsd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_xyzd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgdb_osgearth_yahood.a,
+					/Users/cateye/release/osg/arm64/lib/libOpenThreadsd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgDBd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgUtild.a,
+					/Users/cateye/release/osg/arm64/lib/libosgGAd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgViewerd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgFXd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgParticled.a,
+					/Users/cateye/release/osg/arm64/lib/libosgShadowd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgSimd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgTerraind.a,
+					/Users/cateye/release/osg/arm64/lib/libosgTextd.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					"-framework",
+					sqlite3,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_tiffd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rgbd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_imageiod.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_curld.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_zipd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_freetyped.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_osgd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_ived.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_objd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_shpd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_openflightd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rotd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_scaled.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_transd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osganimationd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgfxd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgparticled.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgshadowd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgsimd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgterraind.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgtextd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgviewerd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgvolumed.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osganimationd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgfxd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgmanipulatord.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgparticled.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgshadowd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgsimd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgterraind.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgtextd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgutild.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgviewerd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgvolumed.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthUtild.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthAnnotationd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthFeaturesd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthSymbologyd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgWidgetd.a,
+					/Users/cateye/projects/osgearth/lib/Debug/libosgEarthd.a,
+					/usr/lib/libm.dylib,
+					/Users/cateye/release/osg/arm64/lib/libosgd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgDBd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgUtild.a,
+					/Users/cateye/release/osg/arm64/lib/libosgGAd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgViewerd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgFXd.a,
+					/usr/lib/libz.dylib,
+					/Users/cateye/release/osg/arm64/lib/libosgManipulatord.a,
+					"-framework",
+					OpenGLES,
+					/Users/cateye/release/osg/arm64/lib/libOpenThreadsd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgShadowd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgSimd.a,
+					/Users/cateye/release/osg/arm64/lib/libosgTerraind.a,
+					/Users/cateye/release/osg/arm64/lib/libosgTextd.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					/Users/cateye/release/3rdParty/all/libproj.a,
+					/Users/cateye/release/3rdParty/all/libFreetype2.a,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = osgearth_viewer_iosd;
+				PRODUCT_TYPE = "com.apple.product-type.application";
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		7CAB23E45B6F44249B7AAE31 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-lz",
+					"-framework",
+					OpenGLES,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos10.3;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = MinSizeRel;
+		};
+		8B47F6D592144E7F91BF7B72 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		92A283DEEF4248B29CA6027B /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		93725ADC0CF64ED78067AE46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-lz",
+					"-framework",
+					OpenGLES,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SDKROOT = iphoneos10.3;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		9C4E984A5224414CB5AB76B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		A16FA8B3B5804990887B0CCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RRVABD6YQ2;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk;
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/build;
+			};
+			name = Release;
+		};
+		A21C6C92A507447C8E499A4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/cateye/projects/osgearth/bin/Release;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks,
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INFOPLIST_FILE = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS/CMakeFiles/application_osgearth_viewer_ios.dir/Info.plist;
+				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = /Users/cateye/projects/osgearth/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/cateye/projects/osgearth/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/cateye/projects/osgearth/lib,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "    -DNDEBUG  ";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"\n-framework",
+					ImageIO,
+					"-framework",
+					CoreImage,
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					CoreGraphics,
+					"\n-framework",
+					JavaScriptCore,
+					"-framework",
+					Security,
+					"-lsqlite3",
+					"-licucore",
+					"-lz",
+					"-liconv",
+					"-lbz2",
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarth.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthFeatures.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthUtil.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthSymbology.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthAnnotation.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthUtil.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_agglite.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_arcgis.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_arcgis_map_cache.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_bing.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_bumpmap.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_cache_filesystem.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_colorramp.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_debug.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_detail.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_earth.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_engine_byo.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_engine_mp.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_engine_rex.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_feature_elevation.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_feature_ogr.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_feature_raster.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_feature_tfs.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_feature_wfs.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_feature_xyz.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_featurefilter_intersect.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_featurefilter_join.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_gdal.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_kml.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_label_annotation.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_mapinspector.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_mask_feature.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_mbtiles.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_model_feature_geom.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_model_simple.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_monitor.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_noise.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_ocean_simple.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_osg.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_quadkey.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_refresh.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_scriptengine_javascript.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_sky_gl.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_sky_simple.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_skyview.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_splat_mask.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_template.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_template_matclass.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_terrainshader.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_tilecache.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_tileindex.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_tileservice.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_tms.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_vdatum_egm84.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_vdatum_egm96.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_vdatum_egm2008.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_viewpoints.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_vpb.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_wcs.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_wms.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_xyz.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgdb_osgearth_yahoo.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					"-framework",
+					sqlite3,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_tiff.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rgb.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_imageio.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_curl.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_zip.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_freetype.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_ive.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_obj.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_shp.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_openflight.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rot.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_scale.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_trans.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osganimation.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgfx.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgparticle.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgshadow.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgsim.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgterrain.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgtext.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgviewer.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgvolume.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osganimation.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgfx.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgmanipulator.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgparticle.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgshadow.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgsim.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgterrain.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgtext.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgutil.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgviewer.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgvolume.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthUtil.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthAnnotation.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthFeatures.a,
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarthSymbology.a,
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					/Users/cateye/projects/osgearth/lib/Release/libosgEarth.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					/usr/lib/libm.dylib,
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = osgearth_viewer_ios;
+				PRODUCT_TYPE = "com.apple.product-type.application";
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		B243CD6BF6034F0CBA2AC928 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+		B592B660B3AD4BB4992F6C29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+					arm64,
+				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "  ";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+		FE1E0C842182460681A78F43 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv7,
+					arm64,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = /Users/cateye/projects/osgearth/bin/RelWithDebInfo;
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks,
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/Users/cateye/projects/osgearth/src,
+					/Users/cateye/release/osg/arm64/include,
+				);
+				INFOPLIST_FILE = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS/CMakeFiles/application_osgearth_viewer_ios.dir/Info.plist;
+				INSTALL_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = /Users/cateye/projects/osgearth/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/cateye/projects/osgearth/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					/Users/cateye/projects/osgearth/lib,
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "       -DNDEBUG  ";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = (
+					"-framework",
+					QuartzCore,
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+					"\n-framework",
+					ImageIO,
+					"-framework",
+					CoreImage,
+					"-framework",
+					Accelerate,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					CoreGraphics,
+					"\n-framework",
+					JavaScriptCore,
+					"-framework",
+					Security,
+					"-lsqlite3",
+					"-licucore",
+					"-lz",
+					"-liconv",
+					"-lbz2",
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthFeaturesrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthUtilrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthSymbologyrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthAnnotationrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthUtilrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_aggliterd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_arcgisrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_arcgis_map_cacherd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_bingrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_bumpmaprd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_cache_filesystemrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_colorramprd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_debugrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_detailrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_earthrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_engine_byord.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_engine_mprd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_engine_rexrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_feature_elevationrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_feature_ogrrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_feature_rasterrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_feature_tfsrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_feature_wfsrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_feature_xyzrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_featurefilter_intersectrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_featurefilter_joinrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_gdalrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_kmlrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_label_annotationrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_mapinspectorrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_mask_featurerd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_mbtilesrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_model_feature_geomrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_model_simplerd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_monitorrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_noiserd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_ocean_simplerd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_osgrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_quadkeyrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_refreshrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_scriptengine_javascriptrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_sky_glrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_sky_simplerd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_skyviewrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_splat_maskrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_templaterd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_template_matclassrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_terrainshaderrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_tilecacherd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_tileindexrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_tileservicerd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_tmsrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_vdatum_egm84rd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_vdatum_egm96rd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_vdatum_egm2008rd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_viewpointsrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_vpbrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_wcsrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_wmsrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_xyzrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgdb_osgearth_yahoord.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					"-framework",
+					sqlite3,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_tiff.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rgb.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_imageio.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_curl.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_zip.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_freetype.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_ive.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_obj.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_shp.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_openflight.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_rot.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_scale.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_trans.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osganimation.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgfx.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgparticle.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgshadow.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgsim.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgterrain.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgtext.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgviewer.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_deprecated_osgvolume.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osg.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osganimation.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgfx.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgmanipulator.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgparticle.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgshadow.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgsim.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgterrain.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgtext.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgutil.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgviewer.a,
+					/Users/cateye/release/osg/arm64/lib/libosgdb_serializers_osgvolume.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthUtilrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthAnnotationrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthFeaturesrd.a,
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthSymbologyrd.a,
+					"/Users/cateye/release/3rdParty/geos-ios-device/lib/libGEOS_3.2.a",
+					/Users/cateye/projects/osgearth/lib/RelWithDebInfo/libosgEarthrd.a,
+					"/Users/cateye/release/3rdParty/curl-ios-device/lib/libcurl.a",
+					"/Users/cateye/release/3rdParty/gdal-ios-device/lib/libgdal.a",
+					/usr/lib/libm.dylib,
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = osgearth_viewer_iosrd;
+				PRODUCT_TYPE = "com.apple.product-type.application";
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/cateye/projects/osgearth/src/applications/osgearth_viewerIOS;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = RelWithDebInfo;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		301089B580184F9E92169F79 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EF2A1B185A94E2F870BBB2C /* Debug */,
+				93725ADC0CF64ED78067AE46 /* Release */,
+				7CAB23E45B6F44249B7AAE31 /* MinSizeRel */,
+				1EBC5741658847CAA0CB5A94 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		73004076E56E43A197D21385 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C4E984A5224414CB5AB76B8 /* Debug */,
+				B592B660B3AD4BB4992F6C29 /* Release */,
+				1C0D7DBF35FE4FE88B2D5015 /* MinSizeRel */,
+				92A283DEEF4248B29CA6027B /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BD0785A89EB0433F9458A2E0 /* Build configuration list for PBXAggregateTarget "install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F180040906F4526857DA6C6 /* Debug */,
+				3E7CD15281514055A1135F2F /* Release */,
+				1C5F437931B84105A9216A35 /* MinSizeRel */,
+				8B47F6D592144E7F91BF7B72 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C9C05AA4857B41B6A07026A8 /* Build configuration list for PBXProject "OSGEARTH_APPLICATIONS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B601CC6698347D2B5643532 /* Debug */,
+				A16FA8B3B5804990887B0CCD /* Release */,
+				4605F07D55E448358EF28D46 /* MinSizeRel */,
+				0E7ACB10FA7D42D19E411991 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CB7215BBD8B34FC1BC1E3E3D /* Build configuration list for PBXNativeTarget "application_osgearth_viewer_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7872C78CE86E4F15B04D9457 /* Debug */,
+				A21C6C92A507447C8E499A4E /* Release */,
+				1752B76D2A4A4627B4F5E0F7 /* MinSizeRel */,
+				FE1E0C842182460681A78F43 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D69055013C2D4AE89CAF49F8 /* Build configuration list for PBXAggregateTarget "package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65632C6CAA94447797D8CF89 /* Debug */,
+				3D4D5DFEEBE9466DA2C3E48B /* Release */,
+				65BB32295B92439BA1F42095 /* MinSizeRel */,
+				B243CD6BF6034F0CBA2AC928 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6F670E1CD1B5433DA9CD7C34 /* Project object */;
+}
