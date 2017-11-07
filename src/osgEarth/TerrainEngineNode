@@ -194,7 +194,7 @@ namespace osgEarth
             const MapFrame&              frame,
             const TileKey&               key,
             const CreateTileModelFilter& filter,
-            ProgressCallback*            progress );
+            ProgressCallback*            progress);
 
         void notifyOfTerrainTileNodeCreation(
             const TileKey& key, 

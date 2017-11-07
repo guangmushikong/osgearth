@@ -334,9 +334,12 @@ MapNode::init()
 
     draping->reestablish( _terrainEngine );
     _overlayDecorator->addTechnique( draping );
+    _drapingManager = &draping->getDrapingManager();
 
     // install the Clamping technique for overlays:
-    _overlayDecorator->addTechnique( new ClampingTechnique() );
+    ClampingTechnique* clamping = new ClampingTechnique();
+    _overlayDecorator->addTechnique(clamping);
+    _clampingManager = &clamping->getClampingManager();
 
     _overlayDecorator->setTerrainEngine(_terrainEngine);
     _overlayDecorator->addChild(_terrainEngine);
@@ -355,6 +358,7 @@ MapNode::init()
 
 
     osg::StateSet* stateset = getOrCreateStateSet();
+    stateset->setName("MapNode");
 
     if ( _mapNodeOptions.enableLighting().isSet() )
     {
@@ -398,6 +402,9 @@ MapNode::init()
     MaterialCallback().operator()(defaultMaterial, 0L);
 
     dirtyBound();
+
+    // install a callback that sets the viewport size uniform:
+    this->addCullCallback(new InstallViewportSizeUniform());
 
     // register for event traversals so we can deal with blacklisted filenames
     ADJUST_EVENT_TRAV_COUNT( this, 1 );
@@ -655,7 +662,7 @@ MapNode::onLayerAdded(Layer* layer, unsigned index)
 
         // encase the layer's node in a container that will hold its state set:
         osg::Group* nodeContainer = new osg::Group();
-        nodeContainer->setStateSet(layer->getStateSet());
+        nodeContainer->setStateSet(layer->getOrCreateStateSet());
         nodeContainer->addChild( node );
         _layerNodes->addChild( nodeContainer );
 
@@ -780,4 +787,16 @@ MapNode::traverse( osg::NodeVisitor& nv )
         if (dynamic_cast<osgUtil::BaseOptimizerVisitor*>(&nv) == 0L)
             osg::Group::traverse( nv );
     }
+}
+
+DrapingManager*
+MapNode::getDrapingManager()
+{
+    return _drapingManager;
+}
+
+ClampingManager*
+MapNode::getClampingManager()
+{
+    return _clampingManager;
 }

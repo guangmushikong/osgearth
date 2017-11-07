@@ -99,6 +99,10 @@ FeatureModelLayer::init()
 
     // Graph needs rebuilding
     _graphDirty = true;
+
+    // Depth sorting by default
+    getOrCreateStateSet()->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
+
 }
 
 void
@@ -170,6 +174,16 @@ FeatureModelLayer::open()
     return VisibleLayer::open();
 }
 
+const GeoExtent&
+FeatureModelLayer::getExtent() const
+{
+    static GeoExtent s_invalid;
+
+    return _featureSource.valid() && _featureSource->getFeatureProfile() ?
+        _featureSource->getFeatureProfile()->getExtent() :
+        s_invalid;
+}
+
 void
 FeatureModelLayer::addedToMap(const Map* map)
 {
@@ -177,8 +191,11 @@ FeatureModelLayer::addedToMap(const Map* map)
 
     // Save a reference to the map since we'll need it to
     // create a new session object later.
-    _session = new Session(map);
-    _session->setStyles( options().styles().get() );
+    _session = new Session(
+        map, 
+        options().styles().get(), 
+        0L,  // feature source - will set later
+        getReadOptions());
 
     if (options().featureSourceLayer().isSet())
     {

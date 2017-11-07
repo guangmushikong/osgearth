@@ -27,6 +27,7 @@
 #include <osgEarthUtil/EarthManipulator>
 #include <osgEarthUtil/Controls>
 #include <osgEarthUtil/ExampleResources>
+#include <osgEarthUtil/ViewFitter>
 #include <osgViewer/Viewer>
 #include <osgViewer/ViewerEventHandlers>
 #include <osgGA/StateSetManipulator>
@@ -45,6 +46,8 @@ static Grid* s_activeBox;
 static Grid* s_inactiveBox;
 static bool s_updateRequired = true;
 static MapModelChange s_change;
+static EarthManipulator* s_manip;
+static osgViewer::View* s_view;
 
 typedef std::map<std::string, ConfigOptions> InactiveLayers;
 static InactiveLayers _inactive;
@@ -133,9 +136,10 @@ main( int argc, char** argv )
 
     // configure the viewer.
     osgViewer::Viewer viewer( arguments );
+    s_view = &viewer;
 
     // install a motion model
-    viewer.setCameraManipulator( new osgEarth::Util::EarthManipulator() );
+    viewer.setCameraManipulator( s_manip = new osgEarth::Util::EarthManipulator() );
 
     // disable the small-feature culling (so text will work)
     viewer.getCamera()->setSmallFeatureCullingPixelSize(-1.0f);
@@ -151,10 +155,6 @@ main( int argc, char** argv )
     // the displayed Map:
     s_activeMap = mapNode->getMap();
     s_activeMap->addMapCallback( new MyMapListener() );
-
-    // a Map to hold inactive layers (layers that have been removed from the displayed Map)
-    //s_inactiveMap = new Map();
-    //s_inactiveMap->addMapCallback( new MyMapListener() );
 
     osg::Group* root = new osg::Group();
 
@@ -197,16 +197,6 @@ struct LayerOpacityHandler : public ControlEventHandler
     VisibleLayer* _layer;
 };
 
-//struct ModelLayerOpacityHandler : public ControlEventHandler
-//{
-//    ModelLayerOpacityHandler( ModelLayer* layer ) : _layer(layer) { }
-//    void onValueChanged( Control* control, float value )
-//    {
-//        _layer->setOpacity( value );
-//    }
-//    ModelLayer* _layer;
-//};
-
 struct AddLayerHandler : public ControlEventHandler
 {
     AddLayerHandler(const ConfigOptions& lc) : _lc(lc) { }
@@ -247,6 +237,28 @@ struct MoveLayerHandler : public ControlEventHandler
     int _newIndex;
 };
 
+struct ZoomLayerHandler : public ControlEventHandler
+{
+    ZoomLayerHandler(Layer* layer) : _layer(layer) { }
+    void onClick(Control* control)
+    {
+        const GeoExtent& extent = _layer->getExtent();
+        if (extent.isValid())
+        {
+            ViewFitter fitter(s_activeMap->getSRS(), s_view->getCamera());
+            std::vector<GeoPoint> points;
+            points.push_back(GeoPoint(extent.getSRS(), extent.west(), extent.south()));
+            points.push_back(GeoPoint(extent.getSRS(), extent.east(), extent.north()));
+            Viewpoint vp;
+            if (fitter.createViewpoint(points, vp))
+            {
+                s_manip->setViewpoint(vp, 2.0);
+            }
+        }
+    }
+    Layer* _layer;
+};
+
 //------------------------------------------------------------------------
 
 
@@ -256,7 +268,7 @@ createControlPanel( osgViewer::View* view )
     ControlCanvas* canvas = ControlCanvas::getOrCreate( view );
 
     s_masterGrid = new Grid();
-    s_masterGrid->setBackColor(0,0,0,0.5);
+    //s_masterGrid->setBackColor(0,0,0,0.5);
     s_masterGrid->setMargin( 10 );
     s_masterGrid->setPadding( 10 );
     s_masterGrid->setChildSpacing( 10 );
@@ -296,10 +308,18 @@ addLayerItem( Grid* grid, int layerIndex, int numLayers, Layer* layer, bool isAc
     int gridRow = grid->getNumRows();
 
     VisibleLayer* visibleLayer = dynamic_cast<VisibleLayer*>(layer);
+
+    // only show layers that derive from VisibleLayer
+    if (!visibleLayer)
+        return;
+
     ImageLayer* imageLayer = dynamic_cast<ImageLayer*>(layer);
+
+    // don't show hidden coverage layers
+    if (imageLayer && imageLayer->isCoverage() && !imageLayer->getVisible())
+        return;
+    
     ElevationLayer* elevationLayer = dynamic_cast<ElevationLayer*>(layer);
-    TerrainLayer* terrainLayer = dynamic_cast<TerrainLayer*>(layer);
-    ModelLayer* modelLayer = dynamic_cast<ModelLayer*>(layer);
 
     // a checkbox to enable/disable the layer:
     if (visibleLayer && layer->getEnabled() && !(imageLayer && imageLayer->isCoverage()))
@@ -332,7 +352,7 @@ addLayerItem( Grid* grid, int layerIndex, int numLayers, Layer* layer, bool isAc
     grid->setControl( gridCol, gridRow, statusLabel );
     gridCol++;
 
-    if (visibleLayer && visibleLayer->getEnabled() && visibleLayer->getVisible())
+    if (visibleLayer && !elevationLayer && visibleLayer->getEnabled() && visibleLayer->getVisible())
     {
         // an opacity slider
         HSliderControl* opacity = new HSliderControl( 0.0f, 1.0f, visibleLayer->getOpacity() );
@@ -340,6 +360,17 @@ addLayerItem( Grid* grid, int layerIndex, int numLayers, Layer* layer, bool isAc
         opacity->setHeight( 12 );
         opacity->addEventHandler( new LayerOpacityHandler(visibleLayer) );
         grid->setControl( gridCol, gridRow, opacity );
+    }
+    gridCol++;
+
+    // zoom button
+    if (layer->getExtent().isValid())
+    {
+        LabelControl* zoomButton = new LabelControl("GO", 14);
+        zoomButton->setBackColor( .4,.4,.4,1 );
+        zoomButton->setActiveColor( .8,0,0,1 );
+        zoomButton->addEventHandler( new ZoomLayerHandler(layer) );
+        grid->setControl( gridCol, gridRow, zoomButton );
     }
     gridCol++;
 

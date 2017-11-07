@@ -27,6 +27,7 @@
 #include <osgEarth/PluginLoader>
 #include <osgEarth/CachePolicy>
 #include <osgEarth/TerrainResources>
+#include <osgEarth/Cache>
 #include <osg/BoundingBox>
 #include <osg/StateSet>
 #include <osgDB/Options>
@@ -201,6 +202,11 @@ namespace osgEarth
          */
         virtual const GeoExtent& getExtent() const;
 
+        /**
+         * Returns or generates a caching ID for this layer
+         */
+        virtual std::string getCacheID() const;
+
     public:
 
         /** Adds a property notification callback to this layer */
@@ -215,24 +221,13 @@ namespace osgEarth
         /**
          * Access the layer's stateset, creating it is necessary
          */
-        osg::StateSet* getOrCreateStateSet() {
-            if (!_stateSet.valid())
-                _stateSet = new osg::StateSet();
-            return getStateSet();
-        }
+        osg::StateSet* getOrCreateStateSet();
 
         /**
          * Layer's stateset, or NULL if none exists
          */
-        virtual osg::StateSet* getStateSet() const {
+        osg::StateSet* getStateSet() const {
             return _stateSet.get();
-        }
-
-        /**
-         * Sets a new stateset on this layer
-         */
-        void setStateSet(osg::StateSet* stateSet) {
-            _stateSet = stateSet;
         }
 
         /**
@@ -276,10 +271,7 @@ namespace osgEarth
     public: // Experimental
 
         //! Called before culling this layer - return false to reject.
-        virtual bool preCull(osgUtil::CullVisitor*) const;
-
-        //! Called after culling this layer
-        virtual void postCull(osgUtil::CullVisitor*) const;
+        virtual bool cull(const osgUtil::CullVisitor*, osg::State::StateSetStack& stateSetStack) const;
 
 
     public: // osg::Object
@@ -315,6 +307,7 @@ namespace osgEarth
         typedef std::vector<osg::ref_ptr<LayerCallback> > CallbackVector;
         CallbackVector _callbacks;
         osg::ref_ptr<osgDB::Options> _readOptions;
+        osg::ref_ptr<CacheSettings> _cacheSettings;
 
         // allow the map access to the addedToMap/removedFromMap methods
         friend class Map;

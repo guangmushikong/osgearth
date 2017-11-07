@@ -112,7 +112,7 @@ namespace
 
                 // if the map doesn't contain a layer with a matching UID,
                 // it's gone so remove it from the render model.
-                if (!_frame.containsLayer(pass._sourceUID))
+                if (!_frame.containsLayer(pass.sourceUID()))
                 {
                     model._passes.erase(model._passes.begin()+p);
                     --p;
@@ -163,6 +163,7 @@ _stateUpdateRequired  ( false )
     if ( Registry::capabilities().supportsGLSL() )
     {
         osg::StateSet* stateset = getOrCreateStateSet();
+        stateset->setName("RexTerrainEngineNode");
         VirtualProgram* vp = VirtualProgram::getOrCreate(stateset);
         vp->setName("RexTerrainEngineNode");
         vp->setIsAbstract(true);    // cannot run by itself, requires additional children
@@ -173,6 +174,7 @@ _stateUpdateRequired  ( false )
     // TODO: replace with a "renderer" object that can return statesets
     // for different layer types, or something.
     _imageLayerStateSet = new osg::StateSet();
+    _imageLayerStateSet->setName("Surface");
 }
 
 RexTerrainEngineNode::~RexTerrainEngineNode()
@@ -213,6 +215,11 @@ RexTerrainEngineNode::setMap(const Map* map, const TerrainOptions& options)
     if (map->getSRS()->isProjected())
     {
         _terrainOptions.morphTerrain() = false;
+    }
+
+    if (_terrainOptions.rangeMode() == osg::LOD::PIXEL_SIZE_ON_SCREEN)
+    {
+        OE_INFO << LC << "Range mode = pixel size; pixel tile size = " << _terrainOptions.tilePixelSize().get() << std::endl;
     }
 
     // if the envvar for tile expiration is set, overide the options setting
@@ -295,15 +302,20 @@ RexTerrainEngineNode::setMap(const Map* map, const TerrainOptions& options)
     // Prime with existing layers:
     _batchUpdateInProgress = true;
 
-    ElevationLayerVector elevationLayers;
-    map->getLayers( elevationLayers );
-    for( ElevationLayerVector::const_iterator i = elevationLayers.begin(); i != elevationLayers.end(); ++i )
-        addElevationLayer( i->get() );
+    LayerVector layers;
+    map->getLayers(layers);
+    for (LayerVector::const_iterator i = layers.begin(); i != layers.end(); ++i)
+        addLayer(i->get());
 
-    ImageLayerVector imageLayers;
-    map->getLayers( imageLayers );
-    for( ImageLayerVector::iterator i = imageLayers.begin(); i != imageLayers.end(); ++i )
-        addTileLayer( i->get() );
+    //ElevationLayerVector elevationLayers;
+    //map->getLayers( elevationLayers );
+    //for( ElevationLayerVector::const_iterator i = elevationLayers.begin(); i != elevationLayers.end(); ++i )
+    //    addElevationLayer( i->get() );
+
+    //ImageLayerVector imageLayers;
+    //map->getLayers( imageLayers );
+    //for( ImageLayerVector::iterator i = imageLayers.begin(); i != imageLayers.end(); ++i )
+    //    addTileLayer( i->get() );
 
     _batchUpdateInProgress = false;
     
@@ -327,7 +339,6 @@ RexTerrainEngineNode::setMap(const Map* map, const TerrainOptions& options)
     _selectionInfo.initialize(
         0u, // always zero, not the terrain options firstLOD
         std::min( _terrainOptions.maxLOD().get(), maxLOD ),
-        _terrainOptions.tileSize().get(),
         _mapFrame.getMapInfo().getProfile(),        
         _terrainOptions.minTileRangeFactor().get() );
 
@@ -525,7 +536,6 @@ RexTerrainEngineNode::dirtyState()
     updateState();
 }
 
-
 void
 RexTerrainEngineNode::traverse(osg::NodeVisitor& nv)
 {
@@ -570,19 +580,17 @@ RexTerrainEngineNode::traverse(osg::NodeVisitor& nv)
             culler._terrain.sortDrawCommands();
         }
 
-        // The common stateset for the terrain:
+        // The common stateset for the terrain group:
         cv->pushStateSet(_terrain->getOrCreateStateSet());
 
-        // Push all the layers to draw on to the cull visitor,
-        // keeping track of render order.
+        // Push all the layers to draw on to the cull visitor in the order in which
+        // they appear in the map.
         LayerDrawable* lastLayer = 0L;
         unsigned order = 0;
         bool surfaceStateSetPushed = false;
-
-        //std::stringstream buf;
-
         int layersDrawn = 0;
-        //bool dump = culler.getFrameStamp()->getFrameNumber() % 100 == 0;
+
+        osg::State::StateSetStack stateSetStack;
 
         for(LayerDrawableList::iterator i = culler._terrain.layers().begin();
             i != culler._terrain.layers().end();
@@ -614,10 +622,17 @@ RexTerrainEngineNode::traverse(osg::NodeVisitor& nv)
 
                 if (lastLayer->_layer)
                 {
-                    if (lastLayer->_layer->preCull(cv))
+                    stateSetStack.clear();
+
+                    if (lastLayer->_layer->cull(cv, stateSetStack))
                     {
+                        for (unsigned j = 0; j<stateSetStack.size(); ++j)
+                            cv->pushStateSet(stateSetStack[j]);
+
                         cv->apply(*lastLayer);
-                        lastLayer->_layer->postCull(cv);
+
+                        for (unsigned j = 0; j<stateSetStack.size(); ++j)
+                            cv->popStateSet();
                     }
                 }
                 else
@@ -649,7 +664,7 @@ RexTerrainEngineNode::traverse(osg::NodeVisitor& nv)
 
         // pop the common terrain state set
         cv->popStateSet();
-
+        
         // marks the end of the cull pass
         this->getEngineContext()->endCull( cv );
 
@@ -1032,10 +1047,7 @@ RexTerrainEngineNode::onMapModelChanged( const MapModelChange& change )
             switch( change.getAction() )
             {
             case MapModelChange::ADD_LAYER:
-                if (change.getLayer()->getRenderType() == Layer::RENDERTYPE_TILE)
-                    addTileLayer( change.getLayer() );
-                else if (change.getElevationLayer())
-                    addElevationLayer(change.getElevationLayer());
+                addLayer(change.getLayer());
                 break;
 
             case MapModelChange::REMOVE_LAYER:
@@ -1073,6 +1085,23 @@ RexTerrainEngineNode::cacheLayerExtentInMapSRS(Layer* layer)
     LayerExtent& le = _cachedLayerExtents[layer->getUID()];
     le._extent = layer->getExtent().transform(_mapFrame.getMapInfo().getSRS());
     le._computed = true;
+}
+
+void
+RexTerrainEngineNode::addLayer(Layer* layer)
+{
+    if (layer)
+    {
+        if (layer->getEnabled())
+        {
+            if (layer->getRenderType() == Layer::RENDERTYPE_TILE)
+                addTileLayer(layer);
+            else if (dynamic_cast<ElevationLayer*>(layer))
+                addElevationLayer(dynamic_cast<ElevationLayer*>(layer));
+        }
+
+        cacheLayerExtentInMapSRS(layer);
+    }
 }
 
 void
@@ -1128,10 +1157,6 @@ RexTerrainEngineNode::addTileLayer(Layer* tileLayer)
             osg::StateSet* stateSet = imageLayer->getOrCreateStateSet();
             VirtualProgram* vp = VirtualProgram::getOrCreate(stateSet);
             shaders.load(vp, shaders.ENGINE_FRAG);
-            
-            // Since we have a new layer, cache its extent in the map's SRS.
-            // We will use this information when culling tiles in the TerrainCuller.
-            cacheLayerExtentInMapSRS(tileLayer);
         }
 
         else
@@ -1268,7 +1293,9 @@ RexTerrainEngineNode::updateState()
     else
     {
         osg::StateSet* terrainStateSet   = _terrain->getOrCreateStateSet();   // everything
-        osg::StateSet* surfaceStateSet   = getSurfaceStateSet();    // just the surface
+        terrainStateSet->setName("Terrain Group");
+
+        osg::StateSet* surfaceStateSet = getSurfaceStateSet();    // just the surface
         
         //terrainStateSet->setRenderBinDetails(0, "SORT_FRONT_TO_BACK");
         
@@ -1305,11 +1332,6 @@ RexTerrainEngineNode::updateState()
 
             surfaceStateSet->setDefine("OE_TERRAIN_RENDER_IMAGERY");
 
-            if (_terrainOptions.enableBlending() == true)
-            {
-                surfaceStateSet->setDefine("OE_TERRAIN_BLEND_IMAGERY");
-            }
-
             // Funtions that affect only the terrain surface:
             VirtualProgram* surfaceVP = VirtualProgram::getOrCreate(surfaceStateSet);
             surfaceVP->setName("Rex Surface");
@@ -1331,6 +1353,11 @@ RexTerrainEngineNode::updateState()
                 package.load(surfaceVP, package.NORMAL_MAP_VERT);
                 package.load(surfaceVP, package.NORMAL_MAP_FRAG);
                 surfaceStateSet->setDefine("OE_TERRAIN_RENDER_NORMAL_MAP");
+            }
+
+            if (_terrainOptions.enableBlending() == true)
+            {
+                surfaceStateSet->setDefine("OE_TERRAIN_BLEND_IMAGERY");
             }
 
             // Morphing?
