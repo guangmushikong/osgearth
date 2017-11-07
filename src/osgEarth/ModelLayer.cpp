@@ -260,7 +260,6 @@ ModelLayer::open()
     return getStatus();
 }
 
-#if 0
 void
 ModelLayer::setReadOptions(const osgDB::Options* readOptions)
 {
@@ -304,24 +303,6 @@ ModelLayer::setReadOptions(const osgDB::Options* readOptions)
 
     // Store it for further propagation!
     _cacheSettings->store(_readOptions.get());
-}
-#endif
-
-std::string
-ModelLayer::getCacheID() const
-{
-    // Customized from the base class to use the driver() config instead of full config:
-    std::string binID;
-    if (options().cacheId().isSet() && !options().cacheId()->empty())
-    {
-        binID = options().cacheId().get();
-    }
-    else
-    {
-        Config conf = options().driver()->getConfig();
-        binID = hashToString(conf.toJSON(false));
-    }
-    return binID;
 }
 
 osg::Node*
@@ -372,8 +353,7 @@ ModelLayer::getOrCreateSceneGraph(const Map*        map,
             group->addChild(node);
 
             // assign the layer's stateset to the group.
-            osg::StateSet* groupSS = getOrCreateStateSet();
-            group->setStateSet(groupSS);
+            group->setStateSet(getOrCreateStateSet());
 
             node = group;
 
@@ -388,12 +368,7 @@ ModelLayer::getOrCreateSceneGraph(const Map*        map,
             {
                 osg::StateSet* ss = node->getOrCreateStateSet();
                 ss->setAttributeAndModes( new osg::Depth( osg::Depth::ALWAYS ) );
-              
                 ss->setRenderBinDetails( 99999, "RenderBin" ); //TODO: configure this bin ...
-            }
-            else
-            {
-                groupSS->setRenderingHint(osg::StateSet::TRANSPARENT_BIN);
             }
 
             // save it.

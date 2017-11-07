@@ -7,6 +7,7 @@ $GLSL_DEFAULT_PRECISION_FLOAT
 
 #pragma import_defines(OE_LIGHTING, OE_NUM_LIGHTS)
 
+uniform bool oe_mode_GL_LIGHTING; 
 uniform float oe_sky_exposure;           // HDR scene exposure (ground level)
 uniform float oe_sky_ambientBoostFactor; // ambient sunlight booster for daytime
 
@@ -18,6 +19,11 @@ in float atmos_space;      // camera altitude (0=ground, 1=atmos outer radius)
 in vec3 atmos_vert; 
         
 vec3 vp_Normal;          // surface normal (from osgEarth)
+
+//#define MAX_LIGHTS 8
+
+// Total number of lights in the scene
+//uniform int osg_NumLights;
 
 // Parameters of each light:
 struct osg_LightSourceParameters 
@@ -50,11 +56,14 @@ struct osg_MaterialParameters
 uniform osg_MaterialParameters osg_FrontMaterial; 
 
 
+
 void atmos_fragment_main(inout vec4 color) 
 { 
 #ifndef OE_LIGHTING
     return;
 #endif
+    //if ( oe_mode_GL_LIGHTING == false )
+    //    return; 
 
     // See:
     // https://en.wikipedia.org/wiki/Phong_reflection_model
@@ -73,7 +82,7 @@ void atmos_fragment_main(inout vec4 color)
         osg_FrontMaterial.emission.rgb;
         // + osg_FrontMaterial.ambient.rgb * osg_LightModel.ambient.rgb;
 
-    int numLights = OE_NUM_LIGHTS;
+    int numLights = OE_NUM_LIGHTS; //min(osg_NumLights, MAX_LIGHTS);
 
     for (int i=0; i<numLights; ++i)
     {

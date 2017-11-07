@@ -30,8 +30,6 @@
 
 #define LC "[GeodeticGraticule] "
 
-#define OE_TEST OE_NULL
-
 using namespace osgEarth;
 using namespace osgEarth::Util;
 using namespace osgEarth::Symbology;
@@ -384,25 +382,10 @@ GeodeticGraticule::cull(osgUtil::CullVisitor* cv)
         //resolution = targetResolution;
 
         // Try to compute an approximate meters to pixel value at this view.
+        double fovy, aspectRatio, zNear, zFar;
+        cv->getProjectionMatrix()->getPerspective(fovy, aspectRatio, zNear, zFar);
         double dist = osg::clampAbove(eyeGeo.z(), 1.0);
-        double halfWidth;
-
-        const osg::Matrix& proj = *cv->getProjectionMatrix();
-        bool isOrtho = osg::equivalent(proj(3,3), 1.0);
-
-        if (isOrtho)
-        {
-            double L, R, B, T, N, F;
-            proj.getOrtho(L, R, B, T, N, F);
-            halfWidth = 0.5*(R-L);
-        }
-        else // perspective
-        {
-            double fovy, aspectRatio, zNear, zFar;
-            cv->getProjectionMatrix()->getPerspective(fovy, aspectRatio, zNear, zFar);
-            halfWidth = osg::absolute(tan(osg::DegreesToRadians(fovy / 2.0)) * dist);
-        }
-
+        double halfWidth = osg::absolute(tan(osg::DegreesToRadians(fovy / 2.0)) * dist);
         cdata._metersPerPixel = (2.0 * halfWidth) / (double)viewport->height();
 
         if (cdata._resolution != resolution)
@@ -410,8 +393,6 @@ GeodeticGraticule::cull(osgUtil::CullVisitor* cv)
             cdata._resolution = (float)resolution;
             cdata._resolutionUniform->set(cdata._resolution);
         }
-
-        OE_TEST << "EW=" << cdata._viewExtent.width() << ", ortho=" << isOrtho << ", hW=" << halfWidth << ", res=" << resolution << ", mPP=" << cdata._metersPerPixel << std::endl;
     }
 
     // traverse the label pool for this camera.
@@ -438,50 +419,27 @@ GeodeticGraticule::getViewExtent(osgUtil::CullVisitor* cullVisitor) const
     // clamp the projection far plane so it's not on the other 
     // side of the globe
     osg::Vec3d eye = osg::Vec3d(0,0,0) * invmv;
+    double f, a, zn, zf;
+    proj.getPerspective(f,a,zn,zf);
+    zf = std::min(zf, eye.length()-1000.0);
+    proj.makePerspective(f, a, zn, zf);
 
     const osgEarth::SpatialReference* srs = osgEarth::SpatialReference::create("epsg:4326");
-
-    double nearPlane, farPlane;
-    double nLeft, nRight, nTop, nBottom;
-    double fLeft, fRight, fTop, fBottom;
     
-    if (osg::equivalent(proj(3,3), 1.0)) // ORTHOGRAPHIC
-    {
-        proj.getOrtho(nLeft, nRight, nBottom, nTop, nearPlane, farPlane);
+    double nearPlane = proj(3,2) / (proj(2,2)-1.0);
+    double farPlane = proj(3,2) / (1.0+proj(2,2));
 
-        fLeft = nLeft;
-        fRight = nRight;
-        fBottom = nBottom;
-        fTop = nTop;
+    // Get the sides of the near plane.
+    double nLeft = nearPlane * (proj(2,0)-1.0) / proj(0,0);
+    double nRight = nearPlane * (1.0+proj(2,0)) / proj(0,0);
+    double nTop = nearPlane * (1.0+proj(2,1)) / proj(1,1);
+    double nBottom = nearPlane * (proj(2,1)-1.0) / proj(1,1);
 
-        // In an ortho projection the near plane can be negative;
-        // That will disrupt our extent calculation, so we want to clamp
-        // it to be between the eyepoint and the far plane.
-        nearPlane = osg::clampBetween(nearPlane, 0.0, farPlane);
-        farPlane = osg::clampBetween(farPlane, 1.0, eye.length() - srs->getEllipsoid()->getRadiusPolar());
-    }
-    else
-    {
-        double f, a, zn, zf;
-        proj.getPerspective(f,a,zn,zf);
-        zf = std::min(zf, eye.length()-1000.0);
-        proj.makePerspective(f, a, zn, zf);
-       
-        nearPlane = proj(3,2) / (proj(2,2)-1.0);
-        farPlane = proj(3,2) / (1.0+proj(2,2));
-
-        // Get the sides of the near plane.
-        nLeft = nearPlane * (proj(2,0)-1.0) / proj(0,0);
-        nRight = nearPlane * (1.0+proj(2,0)) / proj(0,0);
-        nTop = nearPlane * (1.0+proj(2,1)) / proj(1,1);
-        nBottom = nearPlane * (proj(2,1)-1.0) / proj(1,1);
-
-        // Get the sides of the far plane.
-        fLeft = farPlane * (proj(2,0)-1.0) / proj(0,0);
-        fRight = farPlane * (1.0+proj(2,0)) / proj(0,0);
-        fTop = farPlane * (1.0+proj(2,1)) / proj(1,1);
-        fBottom = farPlane * (proj(2,1)-1.0) / proj(1,1);
-    }
+    // Get the sides of the far plane.
+    double fLeft = farPlane * (proj(2,0)-1.0) / proj(0,0);
+    double fRight = farPlane * (1.0+proj(2,0)) / proj(0,0);
+    double fTop = farPlane * (1.0+proj(2,1)) / proj(1,1);
+    double fBottom = farPlane * (proj(2,1)-1.0) / proj(1,1);
 
     double dist = farPlane - nearPlane;
 

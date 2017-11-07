@@ -28,7 +28,6 @@ inline std::string getAttr(xml_node<>* node, const std::string& key)
  */
 inline std::string getChildValue(xml_node<>* node, const std::string& key)
 {
-    std::string result;
 	if (node)
 	{
 		xml_node<>* child = node->first_node(key.c_str(), 0, false);
@@ -36,23 +35,19 @@ inline std::string getChildValue(xml_node<>* node, const std::string& key)
 		{
             if (child->value_size() > 0)
             {
-                result = child->value();
+                return child->value();
             }
             else //Try to read CDATA node
             {
                 child = child->first_node();
                 if (child)
                 {
-                    result = child->value();
+                    return child->value();
                 }
             }
 		}                
-
-    }
-    if (!result.empty())
-        osgEarth::trim2(result);
-
-	return result;
+	}
+	return "";
 }
 
 /*

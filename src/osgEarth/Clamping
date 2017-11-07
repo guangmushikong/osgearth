@@ -25,9 +25,6 @@
 #include <osgEarth/Common>
 #include <osg/Node>
 #include <osg/Geometry>
-#include <osgEarth/ClampableNode>
-#include <osg/ObserverNodePath>
-#include <osg/Camera>
 
 namespace osgEarth
 {
@@ -43,15 +40,9 @@ namespace osgEarth
      */
     class OSGEARTH_EXPORT Clamping
     {
-    public: // mutable
-
+    public:
         // GLSL attribute binding location for clamping vertex attributes
-        static int AnchorAttrLocation;
-
-        // GLSL attribute binding location for clamping vertex heights
-        static int HeightsAttrLocation;
-
-    public: // non-mutable
+        static const int AnchorAttrLocation;
 
         // Name of the clamping anchor vertex attribute
         static const char* AnchorAttrName;
@@ -63,6 +54,9 @@ namespace osgEarth
         // Name of the uniform used to apply an altitude offset to clamped geometry
         static const char* AltitudeOffsetUniformName;
 
+        // GLSL attribute binding location for clamping vertex heights
+        static const int HeightsAttrLocation;
+
         // Name of the clamping heights array attribute
         static const char* HeightsAttrName;
 
@@ -71,8 +65,6 @@ namespace osgEarth
         // to the reference vertex in the attribute data, or to the ground.
         static const float ClampToAnchor;
         static const float ClampToGround;
-
-    public: // utility methods
 
         // Installs a uniform on the stateset indicating that geometry has the
         // clamping vertex attribute installed.
@@ -90,56 +82,6 @@ namespace osgEarth
         static void setHeights(
             osg::Geometry*   geom,
             osg::FloatArray* heights );
-    };
-    
-
-    /**
-     * Culling set for tracking groups whose contents should be GPU-clamped
-     */
-    class OSGEARTH_EXPORT ClampingCullSet
-    {
-    public:
-        struct Entry
-        {            
-            osg::ref_ptr<osg::Group>     _node;
-            osg::ref_ptr<osg::RefMatrix> _matrix;
-            osg::ObserverNodePath        _path;
-            int                          _frame;
-        };
-
-    public:
-        ClampingCullSet();
-        ~ClampingCullSet() { } // not virtual
-
-        /** Pushes a node and its matrix into the cull set */
-        void push(ClampableNode* node, const osg::NodePath& path, const osg::FrameStamp* stamp);
-
-        /** Runs a node visitor on the cull set, optionally popping as it goes along. */
-        void accept(osg::NodeVisitor& nv);
-
-        /** Bounds of this set */
-        const osg::BoundingSphere& getBound() const { return _bs; }
-
-        /** Number of elements in the set */
-        unsigned size() const { return _entries.size(); }
-
-    private:
-        std::vector<Entry>  _entries;
-        osg::BoundingSphere _bs;
-        bool                _frameCulled;
-    };
-
-    /**
-     * Houses all the active DrapingCullSets under an osgEarth TerrainEngine.
-     */
-    class OSGEARTH_EXPORT ClampingManager
-    {
-    public:
-        //! Gets the cull set associated with a camera.
-        ClampingCullSet& get(const osg::Camera*);
-
-    private:
-        PerObjectFastMap<const osg::Camera*, ClampingCullSet> _sets;
     };
 }
 

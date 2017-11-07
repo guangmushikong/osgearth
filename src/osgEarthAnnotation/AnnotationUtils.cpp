@@ -221,11 +221,8 @@ AnnotationUtils::createTextDrawable(const std::string& text,
     {
         t->setFont( font );
 
-        
-#if OSG_VERSION_LESS_THAN(3,5,8)
         // mitigates mipmapping issues that cause rendering artifacts for some fonts/placement
         font->setGlyphImageMargin( 2 );
-#endif
     }
 
     float resFactor = 2.0f;
@@ -842,7 +839,7 @@ AnnotationUtils::installOverlayParent(osg::Node* node, const Style& style)
     // GPU-clamped geometry
     else if ( ap.gpuClamping )
     {
-        ClampableNode* clampable = new ClampableNode();
+        ClampableNode* clampable = new ClampableNode( 0L );
         clampable->addChild( node );
         node = clampable;
 

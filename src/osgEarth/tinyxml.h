@@ -80,17 +80,13 @@ distribution.
 	#endif
 #endif	
 
-namespace osgEarth
-{
-    class TiXmlDocument;
-    class TiXmlElement;
-    class TiXmlComment;
-    class TiXmlUnknown;
-    class TiXmlAttribute;
-    class TiXmlText;
-    class TiXmlDeclaration;
-}
-
+class TiXmlDocument;
+class TiXmlElement;
+class TiXmlComment;
+class TiXmlUnknown;
+class TiXmlAttribute;
+class TiXmlText;
+class TiXmlDeclaration;
 class TiXmlParsingData;
 
 const int TIXML_MAJOR_VERSION = 2;
@@ -100,8 +96,6 @@ const int TIXML_PATCH_VERSION = 1;
 /*	Internal structure for tracking location of items 
 	in the XML file.
 */
-namespace osgEarth
-{
 struct TiXmlCursor
 {
 	TiXmlCursor()		{ Clear(); }
@@ -110,7 +104,7 @@ struct TiXmlCursor
 	int row;	// 0 based.
 	int col;	// 0 based.
 };
-} // namespace osgEarth
+
 
 /**
 	Implements the interface to the "Visitor pattern" (see the Accept() method.)
@@ -131,8 +125,6 @@ struct TiXmlCursor
 
 	@sa TiXmlNode::Accept()
 */
-namespace osgEarth
-{
 class TiXmlVisitor
 {
 public:
@@ -157,7 +149,6 @@ public:
 	/// Visit an unknow node
 	virtual bool Visit( const TiXmlUnknown& /*unknown*/ )			{ return true; }
 };
-} // namespace osgEarth
 
 // Only used by Attribute::Query functions
 enum 
@@ -200,8 +191,6 @@ const TiXmlEncoding TIXML_DEFAULT_ENCODING = TIXML_ENCODING_UNKNOWN;
 	A Decleration contains: Attributes (not on tree)
 	@endverbatim
 */
-namespace osgEarth
-{
 class TiXmlBase
 {
 	friend class TiXmlNode;
@@ -748,17 +737,17 @@ public:
 	*/
 	virtual bool Accept( TiXmlVisitor* visitor ) const = 0;
 
-#ifdef TIXML_USE_STL
-    // The real work of the input operator.
-    virtual void StreamIn( std::istream* in, TIXML_STRING* tag ) = 0;
-#endif
-
 protected:
 	TiXmlNode( NodeType _type );
 
 	// Copy to the allocated object. Shared functionality between Clone, Copy constructor,
 	// and the assignment operator.
 	void CopyTo( TiXmlNode* target ) const;
+
+	#ifdef TIXML_USE_STL
+	    // The real work of the input operator.
+	virtual void StreamIn( std::istream* in, TIXML_STRING* tag ) = 0;
+	#endif
 
 	// Figure out what is at *p, and parse it. Returns null if it is not an xml node.
 	TiXmlNode* Identify( const char* start, TiXmlEncoding encoding );
@@ -1557,7 +1546,7 @@ private:
 	TiXmlCursor errorLocation;
 	bool useMicrosoftBOM;		// the UTF-8 BOM were found when read. Note this, and try to write.
 };
-} // namespace osgEarth
+
 
 /**
 	A TiXmlHandle is a class that wraps a node pointer with null checks; this is
@@ -1639,12 +1628,11 @@ private:
 	}
 	@endverbatim
 */
-
 class TiXmlHandle
 {
 public:
 	/// Create a handle from any node (at any depth of the tree.) This can be a null pointer.
-    TiXmlHandle( osgEarth::TiXmlNode* _node )					{ this->node = _node; }
+	TiXmlHandle( TiXmlNode* _node )					{ this->node = _node; }
 	/// Copy constructor
 	TiXmlHandle( const TiXmlHandle& ref )			{ this->node = ref.node; }
 	TiXmlHandle operator=( const TiXmlHandle& ref ) { this->node = ref.node; return *this; }
@@ -1687,36 +1675,36 @@ public:
 
 	/** Return the handle as a TiXmlNode. This may return null.
 	*/
-    osgEarth::TiXmlNode* ToNode() const			{ return node; }
+	TiXmlNode* ToNode() const			{ return node; } 
 	/** Return the handle as a TiXmlElement. This may return null.
 	*/
-    osgEarth::TiXmlElement* ToElement() const		{ return ( ( node && node->ToElement() ) ? node->ToElement() : 0 ); }
+	TiXmlElement* ToElement() const		{ return ( ( node && node->ToElement() ) ? node->ToElement() : 0 ); }
 	/**	Return the handle as a TiXmlText. This may return null.
 	*/
-    osgEarth::TiXmlText* ToText() const			{ return ( ( node && node->ToText() ) ? node->ToText() : 0 ); }
+	TiXmlText* ToText() const			{ return ( ( node && node->ToText() ) ? node->ToText() : 0 ); }
 	/** Return the handle as a TiXmlUnknown. This may return null.
 	*/
-    osgEarth::TiXmlUnknown* ToUnknown() const		{ return ( ( node && node->ToUnknown() ) ? node->ToUnknown() : 0 ); }
+	TiXmlUnknown* ToUnknown() const		{ return ( ( node && node->ToUnknown() ) ? node->ToUnknown() : 0 ); }
 
 	/** @deprecated use ToNode. 
 		Return the handle as a TiXmlNode. This may return null.
 	*/
-    osgEarth::TiXmlNode* Node() const			{ return ToNode(); }
+	TiXmlNode* Node() const			{ return ToNode(); } 
 	/** @deprecated use ToElement. 
 		Return the handle as a TiXmlElement. This may return null.
 	*/
-    osgEarth::TiXmlElement* Element() const	{ return ToElement(); }
+	TiXmlElement* Element() const	{ return ToElement(); }
 	/**	@deprecated use ToText()
 		Return the handle as a TiXmlText. This may return null.
 	*/
-    osgEarth::TiXmlText* Text() const			{ return ToText(); }
+	TiXmlText* Text() const			{ return ToText(); }
 	/** @deprecated use ToUnknown()
 		Return the handle as a TiXmlUnknown. This may return null.
 	*/
-    osgEarth::TiXmlUnknown* Unknown() const	{ return ToUnknown(); }
+	TiXmlUnknown* Unknown() const	{ return ToUnknown(); }
 
 private:
-    osgEarth::TiXmlNode* node;
+	TiXmlNode* node;
 };
 
 
@@ -1739,22 +1727,22 @@ private:
 	fprintf( stdout, "%s", printer.CStr() );
 	@endverbatim
 */
-class TiXmlPrinter : public osgEarth::TiXmlVisitor
+class TiXmlPrinter : public TiXmlVisitor
 {
 public:
 	TiXmlPrinter() : depth( 0 ), simpleTextPrint( false ),
 					 buffer(), indent( "    " ), lineBreak( "\n" ) {}
 
-    virtual bool VisitEnter( const osgEarth::TiXmlDocument& doc );
-    virtual bool VisitExit( const osgEarth::TiXmlDocument& doc );
+	virtual bool VisitEnter( const TiXmlDocument& doc );
+	virtual bool VisitExit( const TiXmlDocument& doc );
 
-    virtual bool VisitEnter( const osgEarth::TiXmlElement& element, const osgEarth::TiXmlAttribute* firstAttribute );
-    virtual bool VisitExit( const osgEarth::TiXmlElement& element );
+	virtual bool VisitEnter( const TiXmlElement& element, const TiXmlAttribute* firstAttribute );
+	virtual bool VisitExit( const TiXmlElement& element );
 
-    virtual bool Visit( const osgEarth::TiXmlDeclaration& declaration );
-    virtual bool Visit( const osgEarth::TiXmlText& text );
-    virtual bool Visit( const osgEarth::TiXmlComment& comment );
-    virtual bool Visit( const osgEarth::TiXmlUnknown& unknown );
+	virtual bool Visit( const TiXmlDeclaration& declaration );
+	virtual bool Visit( const TiXmlText& text );
+	virtual bool Visit( const TiXmlComment& comment );
+	virtual bool Visit( const TiXmlUnknown& unknown );
 
 	/** Set the indent characters for printing. By default 4 spaces
 		but tab (\t) is also useful, or null/empty string for no indentation.

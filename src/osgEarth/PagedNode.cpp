@@ -59,10 +59,9 @@ namespace
     REGISTER_OSGPLUGIN(osgearth_pseudo_pagednode, PagedNodePseudoLoader);
 }
 
-PagedNode::PagedNode() :
-    _rangeFactor(6.0f),
-    _additive(false)
+PagedNode::PagedNode()
 {
+    _additive = false;
     _plod = new osg::PagedLOD;
     addChild(_plod);
 
@@ -108,8 +107,9 @@ void PagedNode::setupPaging()
         else
         {
             if (_plod->getRangeMode() == _plod->DISTANCE_FROM_EYE_POINT)
-            {                
-                minRange = (float)(bs.radius() * _rangeFactor);
+            {
+                const double rangeFactor = 6.0;
+                minRange = (float)(bs.radius() * rangeFactor);
             }
             else
             {

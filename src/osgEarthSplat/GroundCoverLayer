@@ -121,7 +121,8 @@ namespace osgEarth { namespace Splat
     public: // Layer
 
         //! Override
-        bool cull(const osgUtil::CullVisitor* cv, osg::State::StateSetStack& ssStack) const;
+        bool preCull(osgUtil::CullVisitor* cv) const;
+        void postCull(osgUtil::CullVisitor* cv) const;
 
     protected:
 

@@ -243,27 +243,16 @@ FeatureCursorOGR::readChunk()
             {
                 osg::ref_ptr<Feature> feature = OgrUtils::createFeature( handle, _profile.get() );
 
-                if (feature.valid())
+                if (feature.valid() && !_source->isBlacklisted(feature->getFID()))
                 {
-                    if (!_source->isBlacklisted(feature->getFID()))
+                    if (validateGeometry( feature->getGeometry() ))
                     {
-                        if (validateGeometry( feature->getGeometry() ))
-                        {
-                            filterList.push_back( feature.release() );
-                        }
-                        else
-                        {
-                            OE_DEBUG << LC << "Invalid geometry found at feature " << feature->getFID() << std::endl;
-                        }
+                        filterList.push_back( feature.release() );
                     }
                     else
                     {
-                        OE_DEBUG << LC << "Blacklisted feature " << feature->getFID() << " skipped" << std::endl;
+                        OE_DEBUG << LC << "Invalid geometry found at feature " << feature->getFID() << std::endl;
                     }
-                }
-                else
-                {
-                    OE_DEBUG << LC << "Skipping NULL feature" << std::endl;
                 }
                 OGR_F_Destroy( handle );
             }

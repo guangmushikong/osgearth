@@ -260,10 +260,9 @@ GroundCoverLayer::setTerrainResources(TerrainResources* res)
 }
 
 bool
-GroundCoverLayer::cull(const osgUtil::CullVisitor* cv, osg::State::StateSetStack& stateSetStack) const
+GroundCoverLayer::preCull(osgUtil::CullVisitor* cv) const
 {
-    if (Layer::cull(cv, stateSetStack) == false)
-        return false;
+    Layer::preCull(cv);
 
     // If we have zones, select the current one and apply its state set.
     if (_zones.size() > 0)
@@ -294,9 +293,20 @@ GroundCoverLayer::cull(const osgUtil::CullVisitor* cv, osg::State::StateSetStack
             exit(-1);
         }
         
-        stateSetStack.push_back(zoneStateSet);
+        cv->pushStateSet(zoneStateSet);
     }
     return true;
+}
+
+void
+GroundCoverLayer::postCull(osgUtil::CullVisitor* cv) const
+{
+    // If we have at least one zone, one stateset was pushed in preCull,
+    // so pop it now.
+    if (_zones.size() > 0)
+        cv->popStateSet();
+
+    Layer::postCull(cv);
 }
 
 void
@@ -331,7 +341,8 @@ GroundCoverLayer::buildStateSets()
     GroundCoverShaders shaders;
 
     // Layer-wide stateset:
-    osg::StateSet* stateset = getOrCreateStateSet();
+    osg::StateSet* stateset = new osg::StateSet();
+    this->setStateSet(stateset);
 
     // bind the noise sampler.
     stateset->setTextureAttribute(_noiseBinding.unit(), noiseTexture.get());

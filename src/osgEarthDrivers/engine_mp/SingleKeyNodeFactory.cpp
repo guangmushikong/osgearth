@@ -223,7 +223,7 @@ SingleKeyNodeFactory::createTile(TileModel*        model,
     }
     else
     {
-        result = tileNode.release();
+        result = tileNode;
     }
 
     return result;

@@ -24,7 +24,6 @@
 #include <osgEarth/Registry>
 #include <osgEarth/Capabilities>
 #include <osgEarth/DrapeableNode>
-#include <osgEarth/ClampableNode>
 #include <osgEarth/Lighting>
 #include <osg/Notify>
 
@@ -309,13 +308,6 @@ FeatureNodeFactory::getOrCreateStyleGroup(const Style& style,
         alt->technique() == AltitudeSymbol::TECHNIQUE_DRAPE )
     {
         group = new DrapeableNode();
-    }
-
-    else if (alt &&
-        alt->clamping() == alt->CLAMP_TO_TERRAIN &&
-        alt->technique() == alt->TECHNIQUE_GPU)
-    {
-        group = new ClampableNode();
     }
 
     // Otherwise, a normal group.

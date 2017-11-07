@@ -41,7 +41,6 @@ DrawTileCommand::draw(osg::RenderInfo& ri, DrawState& dsMaster, osg::Referenced*
     if (ds._layerOrderUL >= 0 && !ds._layerOrder.isSetTo(_order))
     {
         ds._ext->glUniform1i(ds._layerOrderUL, (GLint)_order);
-        ds._layerOrder = _order;
     }
 
     // Elevation coefficients (can probably be terrain-wide)

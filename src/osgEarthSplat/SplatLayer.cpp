@@ -200,11 +200,9 @@ SplatLayer::setTerrainResources(TerrainResources* res)
 }
 
 bool
-SplatLayer::cull(const osgUtil::CullVisitor* cv,
-                 osg::State::StateSetStack& stateSetStack) const
+SplatLayer::preCull(osgUtil::CullVisitor* cv) const
 {
-    if (Layer::cull(cv, stateSetStack) == false)
-        return false;
+    Layer::preCull(cv);
 
     // If we have zones, select the current one and apply its state set.
     if (_zones.size() > 0)
@@ -229,10 +227,30 @@ SplatLayer::cull(const osgUtil::CullVisitor* cv,
 
         if (zoneStateSet)
         {
-            stateSetStack.push_back(zoneStateSet);
+            cv->pushStateSet(zoneStateSet);
+        }
+        else
+        {
+            //OE_FATAL << LC << "ASSERTION FAILURE - zoneStateSet is null\n";
+            //exit(-1);
+
+            // push a dummy SS so there's something to pop.
+            static osg::ref_ptr<osg::StateSet> dummy = new osg::StateSet();
+            cv->pushStateSet(dummy.get());
         }
     }
     return true;
+}
+
+void
+SplatLayer::postCull(osgUtil::CullVisitor* cv) const
+{
+    // If we have at least one zone, one stateset was pushed in preCull,
+    // so pop it now.
+    if (_zones.size() > 0)
+        cv->popStateSet();
+
+    Layer::postCull(cv);
 }
 
 void
@@ -284,7 +302,6 @@ SplatLayer::buildStateSets()
         Zone* zone = z->get();
 
         osg::StateSet* zoneStateset = zone->getSurface()->getOrCreateStateSet();
-        zoneStateset->setName("Splat Zone");
 
         // The texture array for the zone:
         const SplatTextureDef& texdef = zone->getSurface()->getTextureDef();
@@ -299,7 +316,7 @@ SplatLayer::buildStateSets()
     }
 
     // Next set up the elements that apply to all zones:
-    osg::StateSet* stateset = this->getOrCreateStateSet();
+    osg::StateSet* stateset = this->getOrCreateStateSet(); //new osg::StateSet();
 
     // Bind the texture image unit:
     stateset->addUniform(new osg::Uniform(SPLAT_SAMPLER, _splatBinding.unit()));

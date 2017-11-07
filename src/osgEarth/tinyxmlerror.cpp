@@ -30,7 +30,6 @@ distribution.
 //
 // It also cleans up the code a bit.
 //
-using namespace osgEarth;
 
 const char* TiXmlBase::errorString[ TIXML_ERROR_STRING_COUNT ] =
 {

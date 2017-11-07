@@ -34,11 +34,6 @@ namespace
         osg::Vec4d Ptemp = Pclip * projMatrixInv;
         Pview.set(Ptemp.x() / Ptemp.w(), Ptemp.y() / Ptemp.w(), Ptemp.z() / Ptemp.w());
     }
-
-    double mix(double a, double b, double t)
-    {
-        return a*(1.0-t) + b*t;
-    }
 }
 
 ViewFitter::ViewFitter(const SpatialReference* mapSRS, const osg::Camera* camera) :
@@ -64,33 +59,15 @@ ViewFitter::createViewpoint(const std::vector<GeoPoint>& points, Viewpoint& outV
     // Convert the point set to world space:
     std::vector<osg::Vec3d> world(points.size());
 
-    // Collect the extent so we can calculate the centroid.
-    GeoExtent extent(_mapSRS.get());
-
     for (int i = 0; i < points.size(); ++i)
     {
-        // force absolute altitude mode - we don't care about clamping here
-        GeoPoint p = points[i];
-        p.z() = 0;
-        p.altitudeMode() = ALTMODE_ABSOLUTE;
-
-        // transform to the map's srs and then to world coords.
-        p = p.transform(_mapSRS.get());
+        GeoPoint p = points[i].transform(_mapSRS.get());
         p.toWorld(world[i]);
-
-        extent.expandToInclude(p.x(), p.y());
     }
     
     double eyeDist;
     double fovy_deg, ar;
     double zfar;
-
-    // Calculate the centroid, which will become the focal point of the view:
-    GeoPoint centroidMap;
-    extent.getCentroid(centroidMap);
-
-    osg::Vec3d centroid;
-    centroidMap.toWorld(centroid);
 
     if (isPerspective)
     {
@@ -103,14 +80,8 @@ ViewFitter::createViewpoint(const std::vector<GeoPoint>& points, Viewpoint& outV
 
         if (_mapSRS->isGeographic())
         {
-            osg::Vec3d C = centroid;
-            C.normalize();
-            C.z() = fabs(C.z());
-            double t = C * osg::Vec3d(0,0,1); // dot product
-
-            zfar = mix(_mapSRS->getEllipsoid()->getRadiusEquator(),
-                       _mapSRS->getEllipsoid()->getRadiusPolar(),
-                       t);
+            zfar = osg::maximum(_mapSRS->getEllipsoid()->getRadiusEquator(),
+                                _mapSRS->getEllipsoid()->getRadiusPolar());
             eyeDist = zfar * 2.0;
         }
         else
@@ -133,14 +104,8 @@ ViewFitter::createViewpoint(const std::vector<GeoPoint>& points, Viewpoint& outV
 
         if (_mapSRS->isGeographic())
         {
-            osg::Vec3d C = centroid;
-            C.normalize();
-            C.z() = fabs(C.z());
-            double t = C * osg::Vec3d(0,0,1); // dot product
-
-            zfar = mix(_mapSRS->getEllipsoid()->getRadiusEquator(),
-                       _mapSRS->getEllipsoid()->getRadiusPolar(),
-                       t);
+            zfar = osg::maximum(_mapSRS->getEllipsoid()->getRadiusEquator(),
+                                _mapSRS->getEllipsoid()->getRadiusPolar());
             eyeDist = zfar * 2.0;
         }
         else
@@ -152,16 +117,20 @@ ViewFitter::createViewpoint(const std::vector<GeoPoint>& points, Viewpoint& outV
         }
     }
 
+    // Calculate the "centroid" of our point set:
+    osg::Vec3d lookFrom;
+    for (int i = 0; i < world.size(); ++i)
+        lookFrom += world[i];
+    lookFrom /= world.size();
+
     // Set up a new view matrix to look down on that centroid:
     osg::Vec3d lookAt, up;
-
-    osg::Vec3d lookFrom = centroid;
 
     if (_mapSRS->isGeographic())
     {
         lookFrom.normalize();
         lookFrom *= eyeDist;
-        lookAt = centroid;
+        lookAt.set(0,0,0);
         up.set(0,0,1);
     }
     else
@@ -206,21 +175,21 @@ ViewFitter::createViewpoint(const std::vector<GeoPoint>& points, Viewpoint& outV
     double Zbest = std::max(Zx, Zy);
 
     // Calcluate the new viewpoint.
-    //osg::Vec3d FPworld = centroid;
+    osg::Vec3d FPworld = lookFrom;
 
-    //if (_mapSRS->isGeographic())
-    //{
-    //    FPworld.normalize();
-    //    FPworld *= zfar;
-    //}
-    //else
-    //{
-    //    FPworld.z() = 0.0;
-    //}
+    if (_mapSRS->isGeographic())
+    {
+        FPworld.normalize();
+        FPworld *= zfar;
+    }
+    else
+    {
+        FPworld.z() = 0.0;
+    }
 
     // Convert to a geopoint
     GeoPoint FP;
-    FP.fromWorld(_mapSRS.get(), centroid);
+    FP.fromWorld(_mapSRS.get(), FPworld);
     outVP = Viewpoint();
     outVP.focalPoint() = FP;
     outVP.pitch() = -90;

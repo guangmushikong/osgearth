@@ -37,8 +37,6 @@ distribution.
 #	endif
 #endif
 
-using namespace osgEarth;
-
 // Note tha "PutString" hardcodes the same list. This
 // is less flexible than it appears. Changing the entries
 // or order will break putstring.	
@@ -172,13 +170,13 @@ void TiXmlBase::ConvertUTF32ToUTF8( unsigned long input, char* output, int* leng
 
 class TiXmlParsingData
 {
-public:
 	friend class TiXmlDocument;
-
-    void Stamp( const char* now, TiXmlEncoding encoding );
+  public:
+	void Stamp( const char* now, TiXmlEncoding encoding );
 
 	const TiXmlCursor& Cursor()	{ return cursor; }
 
+  private:
 	// Only used by the document!
 	TiXmlParsingData( const char* start, int _tabsize, int row, int col )
 	{
@@ -189,8 +187,8 @@ public:
 		cursor.col = col;
 	}
 
-    TiXmlCursor		cursor;
-    const char*		stamp;
+	TiXmlCursor		cursor;
+	const char*		stamp;
 	int				tabsize;
 };
 

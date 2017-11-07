@@ -512,7 +512,6 @@ EarthManipulator::ctor_init()
     _setVPAccel2 = 0;
     _lastTetherMode = TETHER_CENTER;
     _homeViewpointDuration = 0;
-    _lastKnownVFOV = 30.0;
 }
 
 EarthManipulator::EarthManipulator() :
@@ -673,6 +672,7 @@ EarthManipulator::reinitialize()
     _setVP1.unset();
     _lastPointOnEarth.set(0.0, 0.0, 0.0);
     _setVPArcHeight = 0.0;
+    _lastKnownVFOV = 30.0;
 }
 
 

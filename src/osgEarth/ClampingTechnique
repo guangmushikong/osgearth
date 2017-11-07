@@ -24,9 +24,8 @@
 
 #include <osgEarth/Common>
 #include <osgEarth/OverlayDecorator>
-#include <osgEarth/Clamping>
 
-#define OSGEARTH_CLAMPING_BIN "osgEarth::ClampingBin"
+#define OSGEARTH_CLAMPING_BIN           "osgEarth::ClampingBin"
 
 namespace osgEarth
 {
@@ -94,9 +93,6 @@ namespace osgEarth
         void onInstall( TerrainEngineNode* engine );
 
         void onUninstall( TerrainEngineNode* engine );
-        
-        const osg::BoundingSphere& getBound(
-            OverlayDecorator::TechRTTParams& params) const;
 
     protected:
         virtual ~ClampingTechnique() { }
@@ -105,10 +101,6 @@ namespace osgEarth
         int                _textureUnit;
         optional<int>      _textureSize;
         TerrainEngineNode* _engine;
-
-        mutable ClampingManager _clampingManager;
-        ClampingManager& getClampingManager() { return _clampingManager; }
-        friend class MapNode;
 
     private:
         void setUpCamera(OverlayDecorator::TechRTTParams& params);

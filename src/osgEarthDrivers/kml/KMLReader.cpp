@@ -30,7 +30,6 @@
 using namespace osgEarth_kml;
 using namespace osgEarth;
 
-#undef LC
 #define LC "[KMLReader] "
 
 KMLReader::KMLReader( MapNode* mapNode, const KMLOptions* options ) :

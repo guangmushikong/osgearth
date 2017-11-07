@@ -147,7 +147,7 @@ Bounds::radius2d() const {
 
 double
 Bounds::area2d() const {
-    return isValid() ? width() * height() : -1.0;
+    return width() * height();
 }
 
 std::string

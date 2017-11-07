@@ -227,7 +227,7 @@ FeatureNode::build()
         // GPU-clamped geometry
         else if ( ap.gpuClamping )
         {
-            ClampableNode* clampable = new ClampableNode();
+            ClampableNode* clampable = new ClampableNode( getMapNode() );
             clampable->addChild( _attachPoint );
             this->addChild( clampable );
 

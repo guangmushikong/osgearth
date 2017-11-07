@@ -192,11 +192,6 @@ namespace
         "} \n";
 }
 
-LODBlending::LODBlending()
-{
-    init();
-}
-
 
 LODBlending::LODBlending(const LODBlendingOptions& options) :
 LODBlendingOptions(options)
