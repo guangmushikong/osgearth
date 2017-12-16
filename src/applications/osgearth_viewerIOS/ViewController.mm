@@ -19,7 +19,9 @@
 #include <osgEarthUtil/Sky>
 #include <osgEarthUtil/EarthManipulator>
 #include <osgEarthUtil/ExampleResources>
-
+#include <osgEarth/NodeUtils>
+#include <osgEarthUtil/Shadowing>
+#include <osgEarthDrivers/cache_filesystem/FileSystemCache>
 using namespace osgEarth;
 using namespace osgEarth::Util;
 
@@ -70,8 +72,41 @@ using namespace osgEarth::Util;
         return;
     }
     
+      osg::Group* root = new osg::Group();
+    
+    osgEarth::Util::SkyNode* skynode = osgEarth::Util::SkyNode::create(mapNode.get());
+    
+    //osgEarth::Util::ShadowCaster* caster = new osgEarth::Util::ShadowCaster();
+    skynode->attach(_viewer, 0);
+    skynode->setAtmosphereVisible(true);
+    
+    if ( mapNode->getNumParents() > 0 )
+    {
+        //qDebug()<<"insert group";
+        osgEarth::insertGroup(skynode, mapNode->getParent(0));
+    }
+    else
+    {
+        //qDebug()<<"insert not group";
+        skynode->addChild( mapNode );
+        root->addChild(skynode);
+    }
+    
+    //caster->setLight( _viewer->getLight() );
+    //caster->getShadowCastingGroup()->addChild( mapNode->getModelLayerGroup() );
+    
+    if ( mapNode->getNumParents() > 0 )
+    {
+       // insertGroup(caster, mapNode->getParent(0));
+    }
+    else
+    {
+        //caster->addChild(mapNode);
+        //root->addChild(caster);
+    }
+    
     // a root node to hold everything:
-    osg::Group* root = new osg::Group();
+  
     root->addChild( mapNode.get() );
 
     _viewer->setSceneData( root );
@@ -171,6 +206,29 @@ using namespace osgEarth::Util;
     // closer to the ground without near clipping. If you need more, use --logdepth
     _viewer->getCamera()->setNearFarRatio(0.0001);
 
+    
+    
+    //osgEarth::Drivers::FileSystemCacheOptions cacheOptions;
+    //cacheOptions.path() = [NSString stringWithCString:osgDB::getCurrentWorkingDirectory().c_str() encoding:[NSString defaultCStringEncoding]];
+    
+    //cacheOptions.rootPath() = osgDB::getCurrentWorkingDirectory();
+    //MapOptions mapOptions;
+    //mapOptions.cache() = cacheOptions;
+    
+    //((MapOptions*)osgDB::Registry::instance()->getOptions())->cache() = cacheOptions;
+    
+    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    
+    //NSString *document = [[NSString alloc] initWithFormat:[NSString stringWithFormat:@"%@%@",paths[0],@"/Cache"]];
+    
+    
+    
+    //std::string working = [document UTF8String];// osgDB::findDataFile("tests/" + _file);
+    
+
+    //osgDB::FileCache *filechache = new osgDB::FileCache(working.c_str());
+    
+    //osgDB::Registry::instance()->setFileCache(filechache);
     //load
     [self loadOsgEarthDemoScene];
 
