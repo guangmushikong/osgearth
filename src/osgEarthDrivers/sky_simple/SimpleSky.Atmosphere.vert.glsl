@@ -76,7 +76,7 @@ void atmos_SkyFromSpace(void)
     // Now loop through the sample rays 
     vec3 v3FrontColor = vec3(0.0, 0.0, 0.0); 
     vec3 v3Attenuate;   
-    for(int i=0; i<atmos_nSamples; i++) 		
+    for(int i=0; i<atmos_nSamples; i++)
     { 
         float fHeight = length(v3SamplePoint); 			
         float fDepth = exp(atmos_fScaleOverScaleDepth * (atmos_fInnerRadius - fHeight)); 
@@ -160,6 +160,6 @@ void atmos_vertex_main(inout vec4 VertexVIEW)
 
     // Transition from space to atmosphere
     atmos_renderFromSpace = 1.0 - clamp(
-        (atmos_fOuterRadius-atmos_fCameraHeight)/50000,
+        (atmos_fOuterRadius-atmos_fCameraHeight)/50000.0,
         0.0, 1.0 );
 }
